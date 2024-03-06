@@ -2,7 +2,7 @@ header {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #1648c7;
+    background-color: #1B1B2F;
     border: black;
     border-radius: 10px;
     height: 15vh;
@@ -28,7 +28,9 @@ body {
     width: 60%;
 }
 #gameInfo {
-    background-color: #1648c7;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
     border: black;
     border-radius: 10px;
     height: 77vh;
@@ -44,7 +46,7 @@ body {
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
-    background-color: grey;
+    background-color: #1F4068;
     border-radius: 10px;
     height: 50%;
     margin-bottom: 0.5vh;
@@ -54,16 +56,41 @@ body {
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
-    background-color: grey;
+    background-color: #1F4068;
     border-radius: 10px;
     height: 49.5%;
     margin-bottom: 0.5vh;
     padding: 0.5vh;
 }
+#gameInfoTable{
+    height: 51%;
+    background-color: #1F4068;
+    border-radius: 10px;
+    width: 100%;
+
+}
+#gameWinningstate{
+    height: 30%;
+    background-color: #1F4068;
+    border-radius: 10px;
+    width: 100%;
+    margin-bottom: 0.5vh;
+    margin-top: 0.5vh;
+}
+#gameButton{
+    height: 20%;
+    background-color: #1F4068;
+    border-radius: 10px;
+    width: 100%;
+}
+#red{background-color: #AD1D45;}
+#blue{background-color: #7B6CF6;}
+#yellow{background-color: #ECBC55;}
 .gameToken{
     height: 100%;
     width: 33%;
     border-radius: 50%;
-    background-color: aqua;
     margin-right: 0.5vh;
+    background-color: black;
 }
+/* token color red AD1D45 blue 7B6CF6 yellow ECBC55 */
