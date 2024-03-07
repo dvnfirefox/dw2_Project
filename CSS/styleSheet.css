@@ -87,9 +87,16 @@ body {
 #blue{background-color: #7B6CF6;}
 #yellow{background-color: #ECBC55;}
 .gameToken{
+    display: flex;
+    justify-content: center;
+    align-items: center;
     height: 100%;
     width: 33%;
     border-radius: 50%;
     margin-right: 0.5vh;
     background-color: black;
+
+}
+.textToken{
+    color: grey;
 }
