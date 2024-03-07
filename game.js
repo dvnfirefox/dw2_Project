@@ -2,6 +2,7 @@ const color = ['#AD1D45','#7B6CF6','#ECBC55', 'black'];
 const tokenId = ['random1', 'random2', 'random3'];
 const textId = ['randomText1', 'randomText2', 'randomText3'];
 const hiddenColor = [];
+var colorcount;
 
 function randomColor() {
     return Math.floor(Math.random() *3);
@@ -32,14 +33,18 @@ function resetBoard(){
         document.getElementById(textId[i]).innerHTML = "?";
     }
     tokencolorIni();
+}
+function colorSelect(color){
 
 
 }
-function createEventListener(){
-    document.getElementById('resetButton').addEventListener("click", resetBoard, false);
-    document.getElementById('checkButton').addEventListener("click", showAllColor, false);
-}
-createEventListener();
+document.getElementById('resetButton').addEventListener("click", resetBoard, false);
+document.getElementById('checkButton').addEventListener("click", showAllColor, false);
+document.getElementById("red").addEventListener("click", colorSelect(0), false);
+document.getElementById("blue").addEventListener("click", colorSelect(1), false);
+document.getElementById("yellow").addEventListener("click", colorSelect(2), false);
+
+
 resetBoard();
 
 

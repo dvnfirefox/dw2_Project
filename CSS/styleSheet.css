@@ -13,12 +13,11 @@ header {
 body {
     background-color: black;
 }
-#gameTitle {
+#gameTitle{
     color: grey;
     font-size: xxx-large;
     font-weight: bold;
     font-family: Tahoma, serif;
-
 }
 #gameTable {
     border: black;
@@ -98,5 +97,14 @@ body {
 
 }
 .textToken{
+    color: black;
+    font-size: xxx-large;
+    font-weight: bold;
+    font-family: Tahoma, serif;
+}
+.textRandomToken{
     color: grey;
+    font-size: xxx-large;
+    font-weight: bold;
+    font-family: Tahoma, serif;
 }
