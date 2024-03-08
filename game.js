@@ -1,13 +1,14 @@
-const color = ['#AD1D45','#7B6CF6','#ECBC55', 'black'];
+const color = ['#7B6CF6','#AD1D45','#ECBC55', 'black'];
 const tokenId = ['random1', 'random2', 'random3'];
 const textId = ['randomText1', 'randomText2', 'randomText3'];
 const tryId = ['try0', 'try1','try2', 'try3', 'try4']
-const tokenButton = ['redText', 'blueText', 'yellowText'];
+const tokenButton = ['blueText', 'redText', 'yellowText'];
 var hiddenColor = [];
 var colorchosed = [];
 var colorcount = 0;
 var gameEnded = 0;
 var guessCount = 0;
+var guessLeft;
 
 function randomColor() {
     return Math.floor(Math.random() *3);
@@ -35,45 +36,55 @@ function resetBoard(){
     for(let i = 0; i<3; i++) {
         colorSet(tokenId[i], 3)
         document.getElementById(textId[i]).innerHTML = "?";
-
+        colorchosed[i] = 0;
     }
     for(let tryReset = 0; tryReset<5; tryReset++){
         document.getElementById(tryId[tryReset]).innerHTML = "correct answers = ";
     }
+    document.getElementById('gameToken0').style.backgroundColor = color[colorchosed[0]];
+    document.getElementById('gameToken1').style.backgroundColor = color[colorchosed[1]];
+    document.getElementById('gameToken2').style.backgroundColor = color[colorchosed[2]];
     guessCount = 0;
+    guessLeft = 5 - guessCount;
+    document.getElementById('guessLeft').innerHTML = "guess left = " + guessLeft;
     gameEnded = 0;
     resetChosedColor();
     tokencolorIni();
+    document.getElementById('checkButton').disabled = false;
+
 }
 function resetChosedColor(){
     for(let i = 0; i<3; i++) {
-        colorchosed[i] = null;
-        document.getElementById(tokenButton[i]).innerHTML = "";
     }
     colorcount = 0;
 }
 
-function selectRed(){
-    if(colorchosed[0] == null && gameEnded === 0){
-        document.getElementById('redText').innerHTML = (colorcount + 1);
-        colorchosed[0] = colorcount;
-        colorcount++;
+function token0(){
+    if(gameEnded === 0) {
+        colorchosed[0]++;
+        if (colorchosed[0] > 2) {
+            colorchosed[0] = 0;
+        }
+        document.getElementById('gameToken0').style.backgroundColor = color[colorchosed[0]];
     }
 }
-function selectblue(){
-    if(colorchosed[1] == null && gameEnded === 0){
-        document.getElementById('blueText').innerHTML = (colorcount + 1);
-        colorchosed[1] = colorcount;
-        colorcount++;
+function token1(){
+    if(gameEnded === 0) {
+        colorchosed[1]++;
+        if (colorchosed[1] > 2) {
+            colorchosed[1] = 0;
+        }
+        document.getElementById('gameToken1').style.backgroundColor = color[colorchosed[1]];
     }
 }
-function selectyellow(){
-    if(colorchosed[2] == null && gameEnded === 0){
-        document.getElementById('yellowText').innerHTML = (colorcount + 1);
-        colorchosed[2] = colorcount;
-        colorcount++;
+function token2(){
+    if(gameEnded === 0) {
+        colorchosed[2]++;
+        if (colorchosed[2] > 2) {
+            colorchosed[2] = 0;
+        }
+        document.getElementById('gameToken2').style.backgroundColor = color[colorchosed[2]];
     }
-
 }
 function check(){
     var guess =0;
@@ -85,19 +96,26 @@ function check(){
     if(guess === 3){
         showAllColor();
         gameEnded = 1;
+        document.getElementById('gameWinningstate').innerHTML = "you win";
+        document.getElementById('checkButton').disabled = true;
     }else if(guessCount >= 5){
         showAllColor();
         gameEnded = 1;
+        document.getElementById('gameWinningstate').innerHTML = "you lose";
+        document.getElementById('checkButton').disabled = true;
 
+    }else{
+        resetChosedColor();
     }
+    guessLeft = 5 - guessCount;
+    document.getElementById('guessLeft').innerHTML = "guess left = " + guessLeft;
 
-    resetChosedColor();
 }
 document.getElementById('resetButton').addEventListener("click", resetBoard, false);
 document.getElementById('checkButton').addEventListener("click", check, false);
-document.getElementById("red").addEventListener("click", selectRed, false);
-document.getElementById("blue").addEventListener("click", selectblue, false);
-document.getElementById("yellow").addEventListener("click", selectyellow, false);
+document.getElementById("gameToken0").addEventListener("click", token0, false);
+document.getElementById("gameToken1").addEventListener("click", token1, false);
+document.getElementById("gameToken2").addEventListener("click", token2, false);
 
 resetBoard();
 

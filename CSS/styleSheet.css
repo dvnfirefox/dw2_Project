@@ -73,6 +73,11 @@ body {
 
 }
 #gameWinningstate{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: xxx-large;
+    font-weight: bold;
     height: 30%;
     background-color: #1F4068;
     border-radius: 10px;
