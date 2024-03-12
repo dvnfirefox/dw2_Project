@@ -1,7 +1,7 @@
+"use strict";
 const color = ['#7B6CF6','#AD1D45','#ECBC55', 'black'];
 const tokenId = ['random1', 'random2', 'random3'];
 const textId = ['randomText1', 'randomText2', 'randomText3'];
-const tokenButton = ['blueText', 'redText', 'yellowText'];
 var hiddenColor = [];
 var colorchosed = [];
 var colorcount = 0;
