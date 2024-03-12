@@ -1,7 +1,6 @@
 const color = ['#7B6CF6','#AD1D45','#ECBC55', 'black'];
 const tokenId = ['random1', 'random2', 'random3'];
 const textId = ['randomText1', 'randomText2', 'randomText3'];
-const tryId = ['try0', 'try1','try2', 'try3', 'try4']
 const tokenButton = ['blueText', 'redText', 'yellowText'];
 var hiddenColor = [];
 var colorchosed = [];
@@ -9,6 +8,8 @@ var colorcount = 0;
 var gameEnded = 0;
 var guessCount = 0;
 var guessLeft;
+const guessList = document.getElementById('guessList');
+
 
 function randomColor() {
     return Math.floor(Math.random() *3);
@@ -38,9 +39,6 @@ function resetBoard(){
         document.getElementById(textId[i]).innerHTML = "?";
         colorchosed[i] = 0;
     }
-    for(let tryReset = 0; tryReset<5; tryReset++){
-        document.getElementById(tryId[tryReset]).innerHTML = "correct answers = ";
-    }
     document.getElementById('gameToken0').style.backgroundColor = color[colorchosed[0]];
     document.getElementById('gameToken1').style.backgroundColor = color[colorchosed[1]];
     document.getElementById('gameToken2').style.backgroundColor = color[colorchosed[2]];
@@ -51,6 +49,7 @@ function resetBoard(){
     resetChosedColor();
     tokencolorIni();
     document.getElementById('checkButton').disabled = false;
+    guessList.innerHTML ="";
 
 }
 function resetChosedColor(){
@@ -91,7 +90,6 @@ function check(){
     for(let i = 0; i<3; i++) {
         if(hiddenColor[i] === colorchosed[i]){guess++}
     }
-    document.getElementById(tryId[guessCount]).innerHTML = 'correct answers = ' + guess;
     guessCount++;
     if(guess === 3){
         showAllColor();
@@ -109,7 +107,16 @@ function check(){
     }
     guessLeft = 5 - guessCount;
     document.getElementById('guessLeft').innerHTML = "guess left = " + guessLeft;
+    answersListAdd(guess);
 
+}
+
+
+function answersListAdd(guess) {
+    const answersList = document.createElement('li');
+    answersList.classList.add('guessListItem'); // Changed class name
+    answersList.textContent = "correct answers = " + guess;
+    guessList.appendChild(answersList);
 }
 document.getElementById('resetButton').addEventListener("click", resetBoard, false);
 document.getElementById('checkButton').addEventListener("click", check, false);
